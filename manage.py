@@ -9,8 +9,8 @@ app = create_app('development')
 manager = Manager(app)
 manager.add_command('server', Server(use_debugger=True))
 
-migrate = Migrate(app, db)
-manager.add_command('db', MigrateCommand)
+#migrate = Migrate(app, db)
+#manager.add_command('db', MigrateCommand)
 
 
 @manager.shell
