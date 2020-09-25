@@ -31,4 +31,9 @@ def create_app(config_name):
     app.register_blueprint(main_blueprint)
     # Initialized application
     db.init_app(app)
+    # Initialized login manager
+    login_manager.init_app(app)
+    # Initialized flask mail
+    mail.init_app(app)
+    
     return app
