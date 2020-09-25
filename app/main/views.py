@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for
-from flask.logging import login_required, current_user
+from flask_login import login_required, current_user
 
 from . import main
 from .forms import PostForm, CommentForm, LoginProfile

@@ -29,7 +29,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password, password)
 
     def __repr__(self):
-        return f'User: {self.username}'
+        return f"User: {self.username}"
 
 
 @login_manager.user_loader
@@ -96,7 +96,8 @@ class Upvote(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def upvote(cls, id):
+    @classmethod
+    def upvote_count(cls, id):
         upvote_post = Upvote(user=current_user, post_id=id)
         upvote_post.save()
 
@@ -140,4 +141,4 @@ class Downvote(db.Model):
         return downvote
 
     def __repr__(self):
-        return f'{self.user_id}:{self.post_id}'
+        return f'{self.user_id},{self.post_id}'
