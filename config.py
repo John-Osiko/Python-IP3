@@ -11,6 +11,7 @@ class Config:
     '''
     debug = False
     SECRET_KEY = 'any random string'
+    #SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     #  email configurations
