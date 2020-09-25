@@ -4,22 +4,31 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
 
-from config import Config
+from config import config_options
 
-app = Flask(__name__)
 db = SQLAlchemy()
-login_manager = LoginManager(app)
-bootstrap = Bootstrap(app)
-mail = Mail(app)
+login_manager = LoginManager()
+bootstrap = Bootstrap()
+mail = Mail()
 login_manager.login_view = 'logup.login'
 login_manager.session_protection = 'strong'
 
 
-def create_app():
-    app.config.from_object(Config)
+def create_app(config_name):
+    app = Flask(__name__)
+    # Creating the app configurations
+    app.config.from_object(config_options[config_name])
+
+    # Initializing flask extensions
+    bootstrap.init_app(app)
+
     from .logup import logup as logup_blueprint
     from .main import main as main_blueprint
+
+    # Will add authentication views
     app.register_blueprint(logup_blueprint)
+    # Will add the views and forms
     app.register_blueprint(main_blueprint)
+    # Initialized application
     db.init_app(app)
     return app
