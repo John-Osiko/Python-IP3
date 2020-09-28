@@ -11,7 +11,7 @@ def index():
     posts = Post.query.all()
     product = Post.query.filter_by(category='product').all()
     idea = Post.query.filter_by(category='idea').all()
-    business = Post.query.filter_by(category='Business').all()
+    business = Post.query.filter_by(category='business').all()
     return render_template('index.html', business=business, product=product, idea=idea, posts=posts)
 
 
@@ -50,11 +50,7 @@ def comment(post_id):
         comment = form.comment.data
         post_id = post_id
         user_id = current_user._get_current_object().id
-        new_comment = Comment(
-            comment=comment,
-            post_id=post_id,
-            user_id=user_id
-        )
+        new_comment = Comment(comment=comment,post_id=post_id,user_id=user_id)
         new_comment.save()
         new_comments = [new_comment]
         print(new_comments)
@@ -78,7 +74,7 @@ def loginprofile(name):
     form = LoginProfile()
     user = User.query.filter_by(username=name).first()
     if user is None:
-        error = 'The user does not exist'
+        error = 'Invalid username'
     if form.validate_on_submit():
         user.bio = form.bio.data
         user.save()

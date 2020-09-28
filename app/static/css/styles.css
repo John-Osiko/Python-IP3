@@ -2,6 +2,8 @@ body {
     margin: 0;
     padding: 0;
     background-image: url("https://i.pinimg.com/564x/4e/91/c3/4e91c3f96165798b367e09513599bbe4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #particles-js {
@@ -39,13 +41,13 @@ body {
 
 #myapp {
     align-self: center;
-    background: skyblue;
-    width: 400px;
+    background: rgb(206, 213, 216);
+    width: 500px;
     height: 400px;
     cursor: ew-resize;
     position: absolute;
     border-radius: 15px;
-    z-index: 30deg;
+    transform: rotateX(30deg);
 }
 
 #myapp-signup {
@@ -56,7 +58,7 @@ body {
     cursor: auto;
     position: absolute;
     border-radius: 15px;
-    z-index: 30deg;
+    transform: rotateX(30deg);
 }
 
 .division {
@@ -113,9 +115,8 @@ body {
 }
 
 .bgimage {
-    background-image: url('../images/bulb-29050__340.webp');
+    background-image: url('/app/static/images/bulb-29050__340.webp');
     background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
     padding-top: 70px;

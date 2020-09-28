@@ -7,7 +7,7 @@ class Config:
     '''
     debug = False
     SECRET_KEY = 'any random string'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://username:password@localhost/oneminutepitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:johnnybravo@localhost/oneminutepitch'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     #  email configurations
