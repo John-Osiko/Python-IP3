@@ -7,7 +7,6 @@ class Config:
     '''
     debug = False
     SECRET_KEY = 'any random string'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:johnnybravo@localhost/oneminutepitch'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     #  email configurations
@@ -26,7 +25,7 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_ORANGE_URL")
 
 
 class DevConfig(Config):
@@ -38,6 +37,7 @@ class DevConfig(Config):
     '''
 
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:johnnybravo@localhost/oneminutepitch'
 
 
 config_options = {
